@@ -1,3 +1,4 @@
+import time
 
 from pypdf import PdfReader
 
@@ -59,8 +60,8 @@ def verify_claim(claim):
     - False
     """
 
+    time.sleep(2)  # ⏳ prevent rate limit
     verdict = llm.invoke(verdict_prompt).content
-
     return verdict, evidence
 
 
@@ -73,9 +74,12 @@ uploaded_pdf = st.file_uploader("Upload PDF", type="pdf")
 
 if uploaded_pdf:
     text = extract_text_from_pdf(uploaded_pdf)
-    claims = extract_claims(text)
+    MAX_CHARS = 4000
+    claims = extract_claims(text[:MAX_CHARS])
 
-    for claim in claims:
+
+    for claim in claims[:5]:
+
         verdict, evidence = verify_claim(claim)
         st.subheader(claim)
         st.write("Status:", verdict)
