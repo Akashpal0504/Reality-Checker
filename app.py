@@ -1,4 +1,4 @@
-import os
+
 from pypdf import PdfReader
 
 def extract_text_from_pdf(pdf):
@@ -9,10 +9,15 @@ def extract_text_from_pdf(pdf):
     return text
 
 
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
+
 from langchain.prompts import PromptTemplate
 
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatOpenAI(
+    model="gpt-4o-mini",
+    temperature=0
+)
+
 
 claim_prompt = PromptTemplate(
     input_variables=["text"],
