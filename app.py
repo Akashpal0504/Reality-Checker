@@ -11,7 +11,7 @@ def extract_text_from_pdf(pdf):
 
 from langchain_openai import ChatOpenAI
 
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 llm = ChatOpenAI(
     model="gpt-4o-mini",
@@ -31,8 +31,10 @@ claim_prompt = PromptTemplate(
 )
 
 def extract_claims(text):
-    response = llm(claim_prompt.format(text=text))
+    response = llm.invoke(claim_prompt.format(text=text))
+
     return response.content.split("\n")
+
 
 
 from tavily import TavilyClient
@@ -57,7 +59,8 @@ def verify_claim(claim):
     - False
     """
 
-    verdict = llm.predict(verdict_prompt)
+    verdict = llm.invoke(verdict_prompt).content
+
     return verdict, evidence
 
 
