@@ -1,6 +1,20 @@
-import time
+
+import streamlit as st
+import os
+
+st.write("Tavily key loaded:", bool(os.getenv("TAVILY_API_KEY")))
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+
 
 from pypdf import PdfReader
+
+
+
 
 def extract_text_from_pdf(pdf):
     reader = PdfReader(pdf)
@@ -18,6 +32,7 @@ llm = ChatOpenAI(
     model="gpt-4o-mini",
     temperature=0
 )
+
 
 
 claim_prompt = PromptTemplate(
@@ -40,10 +55,15 @@ def extract_claims(text):
 
 from tavily import TavilyClient
 
-tavily = TavilyClient(api_key="TAVILY_API_KEY")
+
+
+
+tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
+
 
 def verify_claim(claim):
-    search_result = tavily.search(query=claim, max_results=3)
+    search_result = tavily.search(claim, max_results=3)
+
 
     if not search_result["results"]:
         return "❌ False", "No evidence found"
@@ -60,8 +80,8 @@ def verify_claim(claim):
     - False
     """
 
-    time.sleep(2)  # ⏳ prevent rate limit
     verdict = llm.invoke(verdict_prompt).content
+
     return verdict, evidence
 
 
@@ -74,12 +94,11 @@ uploaded_pdf = st.file_uploader("Upload PDF", type="pdf")
 
 if uploaded_pdf:
     text = extract_text_from_pdf(uploaded_pdf)
-    MAX_CHARS = 4000
+    MAX_CHARS = 20000
     claims = extract_claims(text[:MAX_CHARS])
 
 
-    for claim in claims[:5]:
-
+    for claim in claims:
         verdict, evidence = verify_claim(claim)
         st.subheader(claim)
         st.write("Status:", verdict)
