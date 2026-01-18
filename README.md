@@ -26,26 +26,22 @@ Link = https://reality-checker.streamlit.app/
 
 🖼️ Example Output
 
-🧠 How It Works
+🌐 Deployment
 
 🛠 Tech Stack
 
+🧪 Evaluation Readiness
+
+🧠 How It Works
+
 🌟 Project Structure
 
+👤 Author
 
-🌟 Features
+📌 Notes
 
-⚙️ Quick Start
 
-📁 Folder Structure
 
-🖼️ Example Output
-
-🧾 Sample JSONL Entry
-
-🧠 Key Highlights
-
-📄 File includes
 
 ## 🚀 What This App Does
 
@@ -98,8 +94,19 @@ streamlit run app.py
 ```
 Then open the browser URL shown in the terminal.
 
+Alternatively, Users can also use the live web application to upload a PDF file and check factual claims directly through the website without any local setup.
+
+Web Application Link: https://reality-checker.streamlit.app/
+
+
 
 ## 📄 Reference Example File
+
+https://github.com/Akashpal0504/Reality-Checker/blob/main/Reference_Example_Report.pdf
+
+
+
+
 
 
 
@@ -136,6 +143,50 @@ Below is an example of the deployed Reality Checker application, demonstrating s
 ![](https://github.com/Akashpal0504/Reality-Checker/blob/main/Example%209.png)
 
 
+
+## 🌐 Deployment
+
+The app is deployed using Streamlit Cloud, allowing instant access through a public URL.
+
+Deployment includes:
+
+- GitHub integration
+
+- Secure API key storage via Streamlit Secrets
+
+- Live testing without local setup
+
+
+## 🛠 Tech Stack
+
+| Component | Technology |
+|--------|-----------|
+| Frontend | Streamlit |
+| Backend | Python |
+| PDF Parsing | PyPDF |
+| LLM | OpenAI (GPT-4o-mini) |
+| Claim Logic | LangChain |
+| Web Search | Tavily API |
+| Deployment | Streamlit Cloud |
+
+---
+
+
+
+## 🧪 Evaluation Readiness
+
+This app is designed to pass evaluation tests that include:
+
+- Intentional false claims
+- Outdated statistics
+- Widely circulated myths
+
+Instead of accepting claims blindly, the system:
+
+- Flags inaccuracies
+- Searches real-time sources
+- Provides supporting evidence
+
 ## 🧠 How It Works (High-Level Flow)
 
 ```
@@ -156,19 +207,6 @@ Verification Status + Evidence
 
 ---
 
-## 🛠 Tech Stack
-
-| Component | Technology |
-|--------|-----------|
-| Frontend | Streamlit |
-| Backend | Python |
-| PDF Parsing | PyPDF |
-| LLM | OpenAI (GPT-4o-mini) |
-| Claim Logic | LangChain |
-| Web Search | Tavily API |
-| Deployment | Streamlit Cloud |
-
----
 
 
 ## 📁 Project Structure
@@ -178,9 +216,28 @@ Verification Status + Evidence
 ├── requirements.txt # Python dependencies
 ├── .env.example # Environment variable template
 ├── README.md # Project documentation
-└── Assessment Reference_Market_Report.pdf
+└── Reference_Sample_Report.pdf
 
 ```
+
+
+## 👤 Author
+
+Akash Pal
+
+B.Tech Computer Science
+
+AI / ML & Applied LLM Projects
+
+
+## 📌 Notes
+
+- API usage depends on available credits
+
+- Results may vary slightly depending on live web data
+
+- The app prioritizes correctness over speed
+
 
 
 
