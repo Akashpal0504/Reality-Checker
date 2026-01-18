@@ -18,7 +18,20 @@ Link = https://reality-checker.streamlit.app/
 
 🚀 What This App Does
 
+⚙️ Quick Start
+
+📄 Reference Example File
+
 📂 Example Use Case
+
+🖼️ Example Output
+
+🧠 How It Works
+
+🛠 Tech Stack
+
+🌟 Project Structure
+
 
 🌟 Features
 
@@ -51,6 +64,46 @@ Link = https://reality-checker.streamlit.app/
 
 ---
 
+## ⚙️ Quick Start
+
+### 1️⃣ Clone the Repository
+```bash
+git clone <your-github-repo-url>
+cd reality-checker
+```
+
+2️⃣ Create Virtual Environment
+```
+python -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
+```
+
+3️⃣ Install Dependencies
+```
+pip install -r requirements.txt
+```
+
+4️⃣ Add API Keys
+
+Create a .env file:
+```
+OPENAI_API_KEY=your_openai_api_key
+TAVILY_API_KEY=your_tavily_api_key
+```
+
+▶️ Run the App Locally
+```
+streamlit run app.py
+```
+Then open the browser URL shown in the terminal.
+
+
+## 📄 Reference Example File
+
+
+
+
 
 ## 📂 Example Use Case
 
@@ -66,8 +119,68 @@ The app automatically flags which claims are **reliable** and which are **incorr
 
 ## 🖼️ Example Output
 
+Below is an example of the deployed Reality Checker application, demonstrating successful PDF upload, automated claim extraction, live web verification, and accurate classification of claims as Verified, Inaccurate, or False.
+
+![](https://github.com/Akashpal0504/Reality-Checker/blob/main/Example%201.png)
+
+![](https://github.com/Akashpal0504/Reality-Checker/blob/main/Example%202.png)
+
+![](https://github.com/Akashpal0504/Reality-Checker/blob/main/Example%204.png)
+
+![](https://github.com/Akashpal0504/Reality-Checker/blob/main/Example%206.png)
+
+![](https://github.com/Akashpal0504/Reality-Checker/blob/main/Example%207.png)
+
+![](https://github.com/Akashpal0504/Reality-Checker/blob/main/Example%208.png)
+
+![](https://github.com/Akashpal0504/Reality-Checker/blob/main/Example%209.png)
 
 
+## 🧠 How It Works (High-Level Flow)
+
+```
+PDF Upload
+↓
+Text Extraction (PyPDF)
+↓
+Claim Detection (LLM)
+↓
+Live Web Search (Tavily)
+↓
+AI-Based Comparison
+↓
+Verification Status + Evidence
+```
+
+
+
+---
+
+## 🛠 Tech Stack
+
+| Component | Technology |
+|--------|-----------|
+| Frontend | Streamlit |
+| Backend | Python |
+| PDF Parsing | PyPDF |
+| LLM | OpenAI (GPT-4o-mini) |
+| Claim Logic | LangChain |
+| Web Search | Tavily API |
+| Deployment | Streamlit Cloud |
+
+---
+
+
+## 📁 Project Structure
+
+```
+├── app.py # Main Streamlit application
+├── requirements.txt # Python dependencies
+├── .env.example # Environment variable template
+├── README.md # Project documentation
+└── Assessment Reference_Market_Report.pdf
+
+```
 
 
 
